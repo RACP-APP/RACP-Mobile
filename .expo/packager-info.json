@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19003,
-  "expoServerPort": 19004,
-  "packagerPort": 19005,
-  "packagerPid": 3217,
-  "expoServerNgrokUrl": "https://wf-6kb.anonymous.racp-mobile.exp.direct",
-  "packagerNgrokUrl": "https://packager.wf-6kb.anonymous.racp-mobile.exp.direct",
-  "ngrokPid": 3227
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
