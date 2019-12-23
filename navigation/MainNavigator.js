@@ -13,14 +13,6 @@ const MainNavigator = createStackNavigator({
         screen: ModulesScreen
     },
     ModuleDetail: ModuleDetailScreen
-
-    
-
-//   Categories: CategoriesScreen,
-//   CategoryMeals: {
-//     screen: CategoryMealsScreen
-//   },
-//   MealDetail: MealDetailScreen,
   
 });
 
