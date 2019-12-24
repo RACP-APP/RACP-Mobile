@@ -12,13 +12,16 @@ import {MODULES} from '../data/dummy-data';
 
 
 const HomeScreen = props =>{
-    console.log(props)
+   
     const renderGridItem = (itemData)=>{
         return (
             <TouchableOpacity 
             style={styles.screen}
             onPress={()=>{props.navigation.navigate({
-                routeName: 'Modules'
+                routeName: 'Modules',
+                params: {
+                    moduleId: itemData.item.id
+                }
             })}}
             >
             <View>
@@ -36,6 +39,13 @@ const HomeScreen = props =>{
          />
     );
 };
+HomeScreen.navigationOptions = {
+    headerTitle: 'Module Categories',
+    headerStyle: {
+        backgroundColor: '#4169e1'
+    },
+    headerTintColor: 'white'
+}
 
 const styles = StyleSheet.create({
     screen: {
