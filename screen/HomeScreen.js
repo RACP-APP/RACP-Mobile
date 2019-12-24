@@ -1,32 +1,47 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
+import {  
+    View, 
+    Text, 
+    StyleSheet,
+    Button, 
+    FlatList,
+    TouchableOpacity
+} from 'react-native';
+
+import {MODULES} from '../data/dummy-data';
 
 
 const HomeScreen = props =>{
+    console.log(props)
+    const renderGridItem = (itemData)=>{
+        return (
+            <TouchableOpacity 
+            style={styles.screen}
+            onPress={()=>{props.navigation.navigate({
+                routeName: 'Modules'
+            })}}
+            >
+            <View>
+                <Text>{itemData.item.title}</Text>
+            </View>
+            </TouchableOpacity>
+        );
+    }
     
     return(
-        <View style={styles.screen} >
-        <Text>
-          Home Screen!
-        </Text>
-        <Button title="Go to Modules"
-        onPress={()=>{props.navigation.navigate({
-            routeName: 'Modules'
-        });
-    }}
+        <FlatList
+            keyExtractor={(item, index)=> item.id}
+            data={MODULES}
+            renderItem={renderGridItem}
          />
-      
-
-    </View>
-  
     );
 };
 
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        height: 200,
+        margin: 20
     }
 })
 
