@@ -18,7 +18,7 @@ const ModulesScreen = props =>{
           The Modules Screen!
         </Text>
         <Text>{selectedModule.title} </Text>
-      
+      <View stye={styles.buttonContainer}>
         <Button 
           title="Go to Details"
            onPress ={()=>{props.navigation.navigate('ModuleDetail')
@@ -28,6 +28,7 @@ const ModulesScreen = props =>{
             onPress={()=>{props.navigation.popToTop();
             }}
          />
+         </View>
 
     </View>
   
@@ -45,11 +46,7 @@ ModulesScreen.navigationOptions = (navigationData) => {
   const modId = navigationData.navigation.getParam('moduleId');
   const selectedModule = MODULES.find(mod => mod.id === modId)
   return {
-    headerTitle: selectedModule.title,
-    headerStyle: {
-      backgroundColor: '#4169e1'
-    },
-    headerTintColor: 'white'
+    headerTitle: selectedModule.title
   }
 
 }
@@ -60,7 +57,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems:'center'
-  
+  },
+  buttonContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    paddingBottom: 5
 
   }
 })

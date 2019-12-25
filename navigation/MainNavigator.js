@@ -12,8 +12,17 @@ const MainNavigator = createStackNavigator({
     Modules:{
         screen: ModulesScreen
     },
-    ModuleDetail: ModuleDetailScreen
-  
-});
+    ModuleDetail: ModuleDetailScreen,
+},
+{
+    initialRouteName: 'Home',
+    defaultNavigationOptions: {
+        headerStyle: {
+            backgroundColor:'#4169e1'
+        },
+        headerTintColor: 'white'
+    }
+}
+);
 
 export default createAppContainer(MainNavigator);

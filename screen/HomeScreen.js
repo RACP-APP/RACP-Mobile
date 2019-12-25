@@ -9,25 +9,24 @@ import {
 } from 'react-native';
 
 import {MODULES} from '../data/dummy-data';
+import ModuleGridTile from '../src/components/ModuleGridTile';
 
 
 const HomeScreen = props =>{
    
     const renderGridItem = (itemData)=>{
         return (
-            <TouchableOpacity 
-            style={styles.screen}
-            onPress={()=>{props.navigation.navigate({
+            <ModuleGridTile
+            title={itemData.item.title}
+            color={itemData.item.color}
+            onSelect={()=> {props.navigation.navigate({
                 routeName: 'Modules',
                 params: {
                     moduleId: itemData.item.id
                 }
             })}}
-            >
-            <View>
-                <Text>{itemData.item.title}</Text>
-            </View>
-            </TouchableOpacity>
+             />
+           
         );
     }
     
@@ -36,23 +35,16 @@ const HomeScreen = props =>{
             keyExtractor={(item, index)=> item.id}
             data={MODULES}
             renderItem={renderGridItem}
+           
          />
     );
 };
 HomeScreen.navigationOptions = {
-    headerTitle: 'Module Categories',
-    headerStyle: {
-        backgroundColor: '#4169e1'
-    },
-    headerTintColor: 'white'
+    headerTitle: 'Module Categories'
 }
 
 const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        height: 200,
-        margin: 20
-    }
+
 })
 
 
