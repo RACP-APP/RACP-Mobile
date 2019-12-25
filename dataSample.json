@@ -1,0 +1,114 @@
+{
+    "homePage": {
+        "video_url": "",
+        "article_1": "",
+        "article_2": ""
+    },
+    "modules": [
+        {
+            "title": "",
+            "id": "",
+            "icon": "",
+            "content": [
+                {
+                    "type": "text",
+                    "subtitle": "",
+                    "content": "lorem ibson"
+                },
+                {
+                    "type": "video",
+                    "subtitle": "",
+                    "content": "video url",
+                    "caption": ""
+                },
+                {
+                    "type": "audio",
+                    "subtitle": "",
+                    "content": "lorem ibson",
+                    "caption": ""
+                },
+                {
+                    "type": "check point",
+                    "subtitle": "",
+                    "content": "lorem ibson"
+                },
+                {
+                    "type": "img",
+                    "subtitle": "",
+                    "content": "img url",
+                    "caption": ""
+                }
+            ]
+        },
+        {
+            "title": "",
+            "id": "",
+            "icon": "",
+            "content": [
+                {
+                    "type": "text",
+                    "subtitle": "",
+                    "content": "lorem ibson"
+                },
+                {
+                    "type": "video",
+                    "subtitle": "",
+                    "content": "video url",
+                    "caption": ""
+                },
+                {
+                    "type": "audio",
+                    "subtitle": "",
+                    "content": "lorem ibson",
+                    "caption": ""
+                },
+                {
+                    "type": "check point",
+                    "subtitle": "",
+                    "content": "lorem ibson"
+                },
+                {
+                    "type": "img",
+                    "subtitle": "",
+                    "content": "img url",
+                    "caption": ""
+                }
+            ]
+        },
+        {
+            "title": "",
+            "id": "",
+            "icon": "",
+            "content": [
+                {
+                    "type": "text",
+                    "subtitle": "",
+                    "content": "lorem ibson"
+                },
+                {
+                    "type": "video",
+                    "subtitle": "",
+                    "content": "video url",
+                    "caption": ""
+                },
+                {
+                    "type": "audio",
+                    "subtitle": "",
+                    "content": "lorem ibson",
+                    "caption": ""
+                },
+                {
+                    "type": "check point",
+                    "subtitle": "",
+                    "content": "lorem ibson"
+                },
+                {
+                    "type": "img",
+                    "subtitle": "",
+                    "content": "img url",
+                    "caption": ""
+                }
+            ]
+        }
+    ]
+}
