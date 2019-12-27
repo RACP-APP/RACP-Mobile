@@ -6,7 +6,7 @@ const ModuleIcon = ({ iconName }) => {
         <Image
             style={{ width: 25, height: 25 }}
             //should target asyncStorage or internal sorage.
-            source={require('../../../assets/module_icons/' + iconName + '.png')}
+            source={{ uri: iconName }}
         />
     );
 

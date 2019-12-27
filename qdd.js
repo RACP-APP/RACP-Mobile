@@ -1,0 +1,90 @@
+const sample = [
+    {
+        title: "module test 1",
+        id: "1",
+        icon: "https://images.unsplash.com/photo-1499084732479-de2c02d45fcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+        content: [
+            {
+                type: "Text",
+                subtitle: "what to do?",
+                content: "buy bread and milk"
+            },
+            {
+                type: "Video",
+                subtitle: "hmmm?",
+                content: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                content2: "../../../assets/game.webm",
+                caption: ""
+            },
+            {
+                type: "audio",
+                subtitle: "listen to this!",
+                content: "",
+                caption: "do do do momy shark dodo dod odo"
+            },
+            {
+                type: "check point",
+                subtitle: "test for now",
+                content: "test4later"
+            },
+            {
+                type: "img",
+                subtitle: "look!",
+                content: "http://images.squarespace-cdn.com/content/v1/59ab127a6f4ca38d477604a0/1507251290292-QOF0NVGXEOFO9ZK08V7N/ke17ZwdGBToddI8pDm48kFQQgP34qnCpeHaeAOzTt7pZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIedjZT6_OBzi2ofH1EqNdNeCRxNMlbxs9807lIebBlcA/proudly+sponsored+by+%281%29.png",
+                caption: "duck"
+            }
+        ]
+    },
+    {
+        title: "module test 2",
+        id: "66",
+        icon: "https://images.unsplash.com/photo-1499084732479-de2c02d45fcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+        content: [
+            {
+                type: "Text",
+                subtitle: "what to do?",
+                content: "buy bread and milk and eggs with some bananas"
+            },
+            {
+                type: "Video",
+                subtitle: "nice thing to see!",
+                content: "http://techslides.com/demos/sample-videos/small.webm",
+                content2: "../../../assets/game.webm",
+                caption: ""
+            },
+            {
+                type: "audio",
+                subtitle: "listen to this!",
+                content: "",
+                caption: "do do do baby shark dodo dod odo"
+            },
+            {
+                type: "check point",
+                subtitle: "later",
+                content: "test for later"
+            },
+            {
+                type: "img",
+                subtitle: "look!",
+                content: "http://images.squarespace-cdn.com/content/v1/59ab127a6f4ca38d477604a0/1507251290292-QOF0NVGXEOFO9ZK08V7N/ke17ZwdGBToddI8pDm48kFQQgP34qnCpeHaeAOzTt7pZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIedjZT6_OBzi2ofH1EqNdNeCRxNMlbxs9807lIebBlcA/proudly+sponsored+by+%281%29.png",
+                caption: "duck"
+            }
+        ]
+    },
+    {
+        title: "module test 3",
+        id: "6000",
+        icon: "https://images.unsplash.com/photo-1499084732479-de2c02d45fcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+        content: [
+            {
+                type: "Video",
+                subtitle: "how to do that? Watch!",
+                content: "https://www.videvo.net/videvo_files/converted/2017_04/preview/170216A_023_BoyatWindow4_1080p.mp439692.webm",
+                content2: "../../../assets/game.webm",
+                caption: ""
+            }
+        ]
+    }
+]
+
+export default sample;

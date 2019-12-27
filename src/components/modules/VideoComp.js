@@ -1,28 +1,33 @@
-import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
 import { Video } from 'expo-av';
-import VideoPlayer from 'expo-video-player'
+import VideoPlayer from 'expo-video-player';
 
-const VideoComp = () => {
+//state work needed for full screen support
+
+const VideoComp = ({ path }) => {
     return (
-        <VideoPlayer
-            videoProps={{
-                shouldPlay: true,
-                resizeMode: Video.RESIZE_MODE_CONTAIN,
-                source: require('../../../assets/game.webm'),
-            }}
-            inFullscreen={true}
-        />
+        <View>
+            <VideoPlayer
+                videoProps={{
+                    shouldPlay: false,
+                    resizeMode: Video.RESIZE_MODE_CONTAIN,
+                    source: {
+                        uri: path
+                    },
+
+                }}
+                inFullscreen={false}
+
+                width={400}
+                height={400}
+                videoBackground='transparent'
+                switchToLandscape={true}
+            />
+        </View>
     );
 };
 
-const styles = StyleSheet.create({
-    screen: {
-        width: 300,
-        height: 300
-    }
-
-});
 
 
 export default VideoComp;
