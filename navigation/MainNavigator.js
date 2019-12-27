@@ -2,12 +2,13 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs'
-import {Ionicons, EvilIcons} from '@expo/vector-icons';
+import {Ionicons, EvilIcons, MaterialCommunityIcons} from '@expo/vector-icons';
 
 import HomeScreen from '../screen/HomeScreen';
 import ModulesScreen from '../screen/ModulesScreen';
 import ModuleDetailScreen from '../screen/ModuleDetailScreen.js'
 import Messages from '../src/components/Messages';
+import Progress from '../src/components/Progress';
 import Colors from '../constants/Colors';
 
 
@@ -35,14 +36,27 @@ const MessageTabNavigator = createStackNavigator({
 
 });
 
+const ProgressTabNavigator = createStackNavigator({
+    Progress: Progress
+})
+
 const AppTabNavigator = createBottomTabNavigator({
     Start: {
         screen: MainNavigator,
         navigationOptions:{
+            // tabBarLabel:'StartApp',
             tabBarIcon: (tabInfo)=> {
                 return <Ionicons name='ios-play' size={25} color={Colors.blueColor} />;
             }
         }
+    },
+    Progress: {
+        screen: ProgressTabNavigator,
+        navigationOptions:{
+            tabBarIcon: (tabInfo)=> <MaterialCommunityIcons
+            name='progress-check' size={25} color={Colors.blueColor} />
+        }
+
     },
     Messages: {
         screen: MessageTabNavigator,
@@ -55,7 +69,8 @@ const AppTabNavigator = createBottomTabNavigator({
                 
             
         }
-    }       
+    }
+
 },{
     tabBarOptions:{
         headerStyle:{
