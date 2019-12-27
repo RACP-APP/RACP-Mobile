@@ -12,6 +12,7 @@ import Module from '../models/module';
 
 
 
+
 const MainNavigator = createStackNavigator(
     {
         Home: HomeScreen,
