@@ -27,16 +27,27 @@ const MainNavigator = createStackNavigator({
     }
 }
 );
+
+const MessageTabNav = createStackNavigator({
+    Message: Messages
+
+});
+
 const AppTabNavigator = createBottomTabNavigator({
     StartApp: {
         screen: MainNavigator
     },
     Message: {
-        screen: Messages
+        screen: MessageTabNav
+    }       
+},{
+    tabBarOptions:{
+        headerStyle:{
+            backgroundColor: Colors.blueColor
+        },
+        activeTintColor: Colors.blueColor
     }
-    
-        
-    
-});
+}
+);
 
 export default createAppContainer(AppTabNavigator);
