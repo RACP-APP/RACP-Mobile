@@ -6,6 +6,7 @@ import HomeScreen from '../screen/HomeScreen';
 import ModulesScreen from '../screen/ModulesScreen';
 import ModuleDetailScreen from '../screen/ModuleDetailScreen.js'
 import Messages from '../src/components/Messages';
+import Colors from '../constants/Colors';
 
 
 
@@ -20,9 +21,9 @@ const MainNavigator = createStackNavigator({
     initialRouteName: 'Home',
     defaultNavigationOptions: {
         headerStyle: {
-            backgroundColor:'#4169e1'
+            backgroundColor: Colors.blueColor
         },
-        headerTintColor: 'white'
+        headerTintColor: Colors.whiteColor
     }
 }
 );
