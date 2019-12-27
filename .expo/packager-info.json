@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 6952,
-  "expoServerNgrokUrl": "https://g7-ptj.anonymous.racp-mobile.exp.direct",
-  "packagerNgrokUrl": "https://packager.g7-ptj.anonymous.racp-mobile.exp.direct",
-  "ngrokPid": 4984,
+  "packagerPid": 6992,
+  "expoServerNgrokUrl": "https://pc-46g.anonymous.racp-mobile.exp.direct",
+  "packagerNgrokUrl": "https://packager.pc-46g.anonymous.racp-mobile.exp.direct",
+  "ngrokPid": 5260,
   "webpackServerPort": null
 }

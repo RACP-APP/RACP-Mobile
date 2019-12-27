@@ -1,6 +1,8 @@
+import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs'
+import {Ionicons, EvilIcons} from '@expo/vector-icons';
 
 import HomeScreen from '../screen/HomeScreen';
 import ModulesScreen from '../screen/ModulesScreen';
@@ -28,17 +30,31 @@ const MainNavigator = createStackNavigator({
 }
 );
 
-const MessageTabNav = createStackNavigator({
+const MessageTabNavigator = createStackNavigator({
     Message: Messages
 
 });
 
 const AppTabNavigator = createBottomTabNavigator({
-    StartApp: {
-        screen: MainNavigator
+    Start: {
+        screen: MainNavigator,
+        navigationOptions:{
+            tabBarIcon: (tabInfo)=> {
+                return <Ionicons name='ios-play' size={25} color={Colors.blueColor} />;
+            }
+        }
     },
-    Message: {
-        screen: MessageTabNav
+    Messages: {
+        screen: MessageTabNavigator,
+        navigationOptions: {
+            tabBarIcon: (tabInfo)=> <EvilIcons
+             name='envelope'
+             size={25}
+              color={Colors.blueColor}
+             />
+                
+            
+        }
     }       
 },{
     tabBarOptions:{

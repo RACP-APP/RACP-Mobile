@@ -48,7 +48,6 @@ ModulesScreen.navigationOptions = (navigationData) => {
   return {
     headerTitle: selectedModule.title
   }
-
 }
 
 
