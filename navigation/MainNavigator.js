@@ -9,13 +9,14 @@ import Messages from '../src/components/Messages';
 import Modules_Page from '../src/components/modules/modules_page';
 import Modules_list from '../src/components/modules/modules_list';
 import Module from '../models/module';
+import LandingPage from '../src/components/LandingPage'
 
 
 
 
 const MainNavigator = createStackNavigator(
     {
-        Home: HomeScreen,
+        Home: LandingPage,
         Modules: {
             screen: ModulesScreen
         },
@@ -42,6 +43,9 @@ const AppTabNavigator = createBottomTabNavigator({
     },
     testModuleList: {
         screen: Modules_list
+    },
+    Mustaf:{
+        screen: HomeScreen
     }
 
 
