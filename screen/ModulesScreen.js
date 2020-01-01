@@ -19,9 +19,9 @@ const ModulesScreen = props =>{
         </Text>
         <Text>{selectedModule.title} </Text>
       <View stye={styles.buttonContainer}>
-        <Button 
-          title="Go to Details"
-           onPress ={()=>{props.navigation.navigate('ModuleDetail')
+        <Button
+          title="Go to Content"
+           onPress ={()=>{props.navigation.navigate('ModuleContent')
            }}
             />
         <Button title="Go Back"
@@ -59,8 +59,8 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingBottom: 5
+    justifyContent: 'flex-end'
+    // paddingBottom: 5
 
   }
 })

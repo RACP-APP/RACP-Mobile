@@ -5,11 +5,11 @@ import {View, Text, StyleSheet, Button} from 'react-native';
 
 
 
-const ModuleDetailScreen = props =>{ 
+const ModuleContentScreen = props =>{ 
     return(
         <View style={styles.screen}>
         <Text>
-          Module Detail
+          Module Content
         </Text>
         <Button
             title="Go Back"
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default ModuleDetailScreen;
+export default ModuleContentScreen;

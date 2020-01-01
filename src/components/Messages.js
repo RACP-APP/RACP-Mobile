@@ -17,11 +17,7 @@ const Messages = props =>{
 };
 
 Messages.navigationOptions = {
-    headerStyle:{
-        backgroundColor: Colors.blueColor
-    },
-    headerTitle: 'Messages',
-    headerTintColor: Colors.whiteColor
+ headerTitle: 'Messages'
     
 }
 

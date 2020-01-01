@@ -17,12 +17,8 @@ const Progress = props =>{
 };
 
 Progress.navigationOptions = {
-    headerStyle:{
-        backgroundColor: Colors.blueColor
-    },
-    headerTitle: 'Progress',
-    headerTintColor: Colors.whiteColor
-    
+   headerTitle: 'Progress....'
+   
 }
 
 const styles = StyleSheet.create({

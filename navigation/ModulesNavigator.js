@@ -3,11 +3,17 @@ import {Platform}from 'react-native'
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs'
-import {Ionicons, EvilIcons, MaterialCommunityIcons} from '@expo/vector-icons';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+import {
+    Ionicons, 
+    EvilIcons, 
+    MaterialCommunityIcons
+} from '@expo/vector-icons';
+
 
 import HomeScreen from '../screen/HomeScreen';
 import ModulesScreen from '../screen/ModulesScreen';
-import ModuleDetailScreen from '../screen/ModuleDetailScreen.js'
+import ModuleContentScreen from '../screen/ModuleContentScreen';
 import Messages from '../src/components/Messages';
 import Progress from '../src/components/Progress';
 import Colors from '../constants/Colors';
@@ -15,16 +21,12 @@ import Colors from '../constants/Colors';
 
 
 const defaultStackNavOptions = {
-    initialRouteName: 'Home',
     headerStyle: {
       backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
     },
     headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
     headerTitle: 'A Screen',
-    initialRouteName: 'Home'
   };
-
-
 
 
 const ModulesNavigator = createStackNavigator({
@@ -32,72 +34,85 @@ const ModulesNavigator = createStackNavigator({
     Modules:{
         screen: ModulesScreen
     },
-    ModuleDetail: ModuleDetailScreen,
+    ModuleContent: ModuleContentScreen,
 },
 {
-    initialRouteName: 'Home',
+    // initialRouteName: 'Home',
     defaultNavigationOptions: defaultStackNavOptions
     
 }
 );
 
 
-const ProgressTabNavigator = createStackNavigator(
-    {
+const ProgressTabNavigator = createStackNavigator({
     Progress: Progress
 },
 {
     defaultNavigationOptions: defaultStackNavOptions
-}
-)
-const MessageTabNavigator = createStackNavigator({
-    Message: Messages
 });
 
+const MessageTabNavigator = createStackNavigator({
+    Message: Messages
+},
+{
+    defaultNavigationOptions: defaultStackNavOptions
+});
 
-const AppTabNavigator = createBottomTabNavigator(
-    {
-    Progress: {
-        screen: ProgressTabNavigator,
-        navigationOptions:{
-            tabBarIcon: (tabInfo)=> <MaterialCommunityIcons
-            name='progress-check' size={25} color={Colors.blueColor} />
-        }
-
-    },
+const tabScreenConfig = {
     Start: {
         screen: ModulesNavigator,
-        navigationOptions:{
-            // tabBarLabel:'StartApp',
-            tabBarIcon: (tabInfo)=> {
-                return <Ionicons name='ios-play' size={25} color={Colors.blueColor} />;
-            }
-        }
+        navigationOptions: {
+            tabBarIcon: tabInfo => {
+              return (
+                <Ionicons name="ios-play" size={25} color={tabInfo.tintColor} />
+              );
+            },
+            tabBarColor: Colors.primaryColor
+          }
+    },
+    Progress: {
+        screen: ProgressTabNavigator,
+        navigationOptions: {
+            tabBarIcon: tabInfo => {
+              return (
+                <MaterialCommunityIcons name="progress-check" size={25} color={tabInfo.tintColor} />
+              );
+            },
+            tabBarColor: Colors.accentColor
+          }
     },
 
     Messages: {
         screen: MessageTabNavigator,
         navigationOptions: {
-            tabBarIcon: (tabInfo)=> <EvilIcons
-             name='envelope'
-             size={25}
-              color={Colors.blueColor}
-             />
-                
-            
+            tabBarIcon: tabInfo => {
+              return (
+                <EvilIcons name="envelope" size={25} color={tabInfo.tintColor} />
+              );
+            },
+            tabBarColor: Colors.lightBlueColor
+          }
+    }
+} 
+
+
+
+  const ModulesTabNavigator =
+  Platform.OS === 'android'
+    ? createMaterialBottomTabNavigator(tabScreenConfig, {
+        activeTintColor: 'white',
+        shifting: true,
+        barStyle: {
+          backgroundColor: Colors.primaryColor
         }
-    }
+      })
+    : createBottomTabNavigator(tabScreenConfig, {
+        initialRouteName:'Start',
+        tabBarOptions: {
+          activeTintColor: Colors.accentColor
+        }
+        
+      }
+      );
 
-},{
-    initialRouteName: 'Start',
-    tabBarOptions:{
-        headerStyle:{
-            backgroundColor: Colors.blueColor
-        },
-        activeTintColor: Colors.blueColor,
-        backgroundColor: Colors.blueColor
-    }
-}
-);
-
-export default createAppContainer(AppTabNavigator);
+export default createAppContainer(ModulesTabNavigator);
