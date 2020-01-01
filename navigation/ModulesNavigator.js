@@ -1,4 +1,5 @@
 import React from 'react';
+import {Platform}from 'react-native'
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs'
@@ -13,7 +14,20 @@ import Colors from '../constants/Colors';
 
 
 
-const MainNavigator = createStackNavigator({
+const defaultStackNavOptions = {
+    initialRouteName: 'Home',
+    headerStyle: {
+      backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
+    },
+    headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
+    headerTitle: 'A Screen',
+    initialRouteName: 'Home'
+  };
+
+
+
+
+const ModulesNavigator = createStackNavigator({
     Home: HomeScreen,
     Modules:{
         screen: ModulesScreen
@@ -22,34 +36,27 @@ const MainNavigator = createStackNavigator({
 },
 {
     initialRouteName: 'Home',
-    defaultNavigationOptions: {
-        headerStyle: {
-            backgroundColor: Colors.blueColor
-        },
-        headerTintColor: Colors.whiteColor
-    }
+    defaultNavigationOptions: defaultStackNavOptions
+    
 }
 );
 
+
+const ProgressTabNavigator = createStackNavigator(
+    {
+    Progress: Progress
+},
+{
+    defaultNavigationOptions: defaultStackNavOptions
+}
+)
 const MessageTabNavigator = createStackNavigator({
     Message: Messages
-
 });
 
-const ProgressTabNavigator = createStackNavigator({
-    Progress: Progress
-})
 
-const AppTabNavigator = createBottomTabNavigator({
-    Start: {
-        screen: MainNavigator,
-        navigationOptions:{
-            // tabBarLabel:'StartApp',
-            tabBarIcon: (tabInfo)=> {
-                return <Ionicons name='ios-play' size={25} color={Colors.blueColor} />;
-            }
-        }
-    },
+const AppTabNavigator = createBottomTabNavigator(
+    {
     Progress: {
         screen: ProgressTabNavigator,
         navigationOptions:{
@@ -58,6 +65,16 @@ const AppTabNavigator = createBottomTabNavigator({
         }
 
     },
+    Start: {
+        screen: ModulesNavigator,
+        navigationOptions:{
+            // tabBarLabel:'StartApp',
+            tabBarIcon: (tabInfo)=> {
+                return <Ionicons name='ios-play' size={25} color={Colors.blueColor} />;
+            }
+        }
+    },
+
     Messages: {
         screen: MessageTabNavigator,
         navigationOptions: {
@@ -72,11 +89,13 @@ const AppTabNavigator = createBottomTabNavigator({
     }
 
 },{
+    initialRouteName: 'Start',
     tabBarOptions:{
         headerStyle:{
             backgroundColor: Colors.blueColor
         },
-        activeTintColor: Colors.blueColor
+        activeTintColor: Colors.blueColor,
+        backgroundColor: Colors.blueColor
     }
 }
 );
