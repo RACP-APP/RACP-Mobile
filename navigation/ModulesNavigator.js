@@ -18,6 +18,7 @@ import ModuleContentScreen from '../screen/ModuleContentScreen';
 import Messages from '../src/components/Messages';
 import Progress from '../src/components/Progress';
 import LightMode from '../src/components/LightMode';
+import Language from '../src/components/Language';
 import Colors from '../constants/Colors';
 
 
@@ -62,6 +63,15 @@ const MessageTabNavigator = createStackNavigator({
 
 const LightModeTabNavigator = createStackNavigator({
     LightModes: LightMode
+},
+{
+  defaultNavigationOptions: defaultStackNavOptions
+});
+
+
+
+const LanguageTabNavigator = createStackNavigator({
+  Languages: Language
 },
 {
   defaultNavigationOptions: defaultStackNavOptions
@@ -132,7 +142,10 @@ const tabScreenConfig = {
               drawerLabel: 'Lists'
             }
           },
-          LightModes: LightModeTabNavigator
+          LightModes: LightModeTabNavigator,
+          Languages: LanguageTabNavigator
+        
+
         },
         {
           contentOptions: {
