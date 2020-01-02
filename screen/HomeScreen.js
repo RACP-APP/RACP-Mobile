@@ -42,17 +42,25 @@ const HomeScreen = props =>{
          />
     );
 };
-HomeScreen.navigationOptions = {
-    headerTitle: 'Module Categories',
-    headerRight: <HeaderButtons HeaderButtonComponent={HeaderButton}>
-    <Item 
-    title="Notification"
-    iconName="ios-notifications"
-    style={{color: 'white'}}
-    onPress={()=>{console.log('Mustaf got  Notification')}}
-    />
-</HeaderButtons>
-}
+HomeScreen.navigationOptions = (navData) => {
+    return {
+    headerTitle: 'Meal Categories',
+    headerLeft: <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item 
+        title="Menu"
+        iconName="ios-menu"
+        onPress={()=>{navData.navigation.toggleDrawer();
+        }} 
+        />
+        <Item 
+      title="Notification"
+      iconName="ios-notifications"
+      onPress={()=>{console.log('Mustaf you got Notification')
+    }}
+      />
+    </HeaderButtons>
+    };
+};
 
 const styles = StyleSheet.create({
 

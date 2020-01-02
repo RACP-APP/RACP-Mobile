@@ -2,7 +2,8 @@ import React from 'react';
 import {Platform}from 'react-native'
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
-import {createBottomTabNavigator} from 'react-navigation-tabs'
+import {createBottomTabNavigator} from 'react-navigation-tabs';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import {
     Ionicons, 
@@ -16,6 +17,7 @@ import ModulesScreen from '../screen/ModulesScreen';
 import ModuleContentScreen from '../screen/ModuleContentScreen';
 import Messages from '../src/components/Messages';
 import Progress from '../src/components/Progress';
+import LightMode from '../src/components/LightMode';
 import Colors from '../constants/Colors';
 
 
@@ -57,6 +59,15 @@ const MessageTabNavigator = createStackNavigator({
 {
     defaultNavigationOptions: defaultStackNavOptions
 });
+
+const LightModeTabNavigator = createStackNavigator({
+    LightModes: LightMode
+},
+{
+  defaultNavigationOptions: defaultStackNavOptions
+});
+
+
 
 const tabScreenConfig = {
     Start: {
@@ -112,7 +123,41 @@ const tabScreenConfig = {
           activeTintColor: Colors.accentColor
         }
         
-      }
+      });
+      const MainNavigator = createDrawerNavigator(
+        {
+          ModulesContents: {
+            screen: ModulesTabNavigator,
+            navigationOptions: {
+              drawerLabel: 'Lists'
+            }
+          },
+          LightModes: LightModeTabNavigator
+        },
+        {
+          contentOptions: {
+            activeTintColor: Colors.accentColor
+          }
+        }
       );
 
-export default createAppContainer(ModulesTabNavigator);
+    // const MainNavigator = createDrawerNavigator(
+    //     {
+    //       MealsFavs: {
+    //         screen: MealsFavTabNavigator,
+    //         navigationOptions: {
+    //           drawerLabel: 'Meals'
+    //         }
+    //       },
+    //       Filters: FiltersNavigator
+    //     },
+    //     {
+    //       contentOptions: {
+    //         activeTintColor: Colors.accentColor,
+    //         labelStyle: {
+    //           fontFamily: 'open-sans-bold'
+    //         }
+    //       }
+    //     }
+    //   );
+export default createAppContainer(MainNavigator);
