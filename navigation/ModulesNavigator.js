@@ -19,6 +19,7 @@ import Messages from '../src/components/Messages';
 import Progress from '../src/components/Progress';
 import LightMode from '../src/components/LightMode';
 import Language from '../src/components/Language';
+import FontSizes from '../src/components/FontSizes';
 import Colors from '../constants/Colors';
 
 
@@ -68,8 +69,6 @@ const LightModeTabNavigator = createStackNavigator({
   defaultNavigationOptions: defaultStackNavOptions
 });
 
-
-
 const LanguageTabNavigator = createStackNavigator({
   Languages: Language
 },
@@ -77,6 +76,12 @@ const LanguageTabNavigator = createStackNavigator({
   defaultNavigationOptions: defaultStackNavOptions
 });
 
+const FontSizeTabNavigator = createStackNavigator({
+  FontSizes:  FontSizes
+},
+{
+  defaultNavigationOptions: defaultStackNavOptions
+});
 
 
 const tabScreenConfig = {
@@ -143,7 +148,8 @@ const tabScreenConfig = {
             }
           },
           LightModes: LightModeTabNavigator,
-          Languages: LanguageTabNavigator
+          Languages: LanguageTabNavigator,
+          FontSizes: FontSizeTabNavigator
         
 
         },
