@@ -20,6 +20,7 @@ import Progress from '../src/components/Progress';
 import LightMode from '../src/components/LightMode';
 import Language from '../src/components/Language';
 import FontSizes from '../src/components/FontSizes';
+import ContactUs from '../src/components/ContactUs';
 import Colors from '../constants/Colors';
 
 
@@ -78,6 +79,13 @@ const LanguageTabNavigator = createStackNavigator({
 
 const FontSizeTabNavigator = createStackNavigator({
   FontSizes:  FontSizes
+},
+{
+  defaultNavigationOptions: defaultStackNavOptions
+});
+
+const ContactUsTabNavigator =  createStackNavigator({
+  ContactUs: ContactUs
 },
 {
   defaultNavigationOptions: defaultStackNavOptions
@@ -147,11 +155,28 @@ const tabScreenConfig = {
               drawerLabel: 'Lists'
             }
           },
-          LightModes: LightModeTabNavigator,
+          LightModes:{
+            screen: LightModeTabNavigator,
+            navigationOptions:{
+              drawerLabel: 'Light Mode',
+              activeTintColor: 'blue'
+            }
+          },
           Languages: LanguageTabNavigator,
-          FontSizes: FontSizeTabNavigator
-        
-
+             
+          FontSizes: {
+            screen: FontSizeTabNavigator,
+            navigationOptions: {
+              drawerLabel:'Font Size'
+            }
+          },
+          ContactUs: {
+            screen: ContactUsTabNavigator,
+            navigationOptions:{
+              drawerLabel: 'Contact Us'
+            }
+          }
+  
         },
         {
           contentOptions: {
