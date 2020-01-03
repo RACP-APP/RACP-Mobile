@@ -1,6 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Button, FlatList } from 'react-native';
+import { View, Text, StyleSheet, Button, FlatList, Image } from 'react-native';
 import VideoComp from './VideoComp'
+import CachedImage from './CachedImage'
+import CacheVid from "./CacheVid";
+import Test from '../testmodu'
+import TestVid from './testmoduv'
+import Ctest from './ClassTest'
 
 
 
@@ -11,7 +16,25 @@ const generate = (type, cont) => {
         return <Text>{cont}</Text>
     }
     else if (type === "Video") {
-        return <VideoComp path={cont}></VideoComp>
+        return <CacheVid
+            source={cont}
+            title={'title for the image'}
+        />
+    }
+    else if (type === "img") {
+        return <CachedImage
+            source={cont}
+            title={'title for the image'}
+        />
+    }
+    else if (type === "img2") {
+        return <Test></Test>
+    }
+    else if (type === "vid2") {
+        return <TestVid></TestVid>
+    }
+    else if (type === "vid3") {
+        return <Ctest></Ctest>
     }
     else if (type === "check point") {
         return <View>
@@ -69,3 +92,9 @@ const styles = StyleSheet.create({
 
 
 export default Modules_Page;
+
+/*
+    else if (type === "img2") {
+        return <Test></Test>
+    }
+ */

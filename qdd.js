@@ -82,7 +82,27 @@ const sample = [
                 content: "https://www.videvo.net/videvo_files/converted/2017_04/preview/170216A_023_BoyatWindow4_1080p.mp439692.webm",
                 content2: "../../../assets/game.webm",
                 caption: ""
+            },
+            {
+                type: "img2",
+                subtitle: "test cache",
+                content: 'https://images.unsplash.com/photo-1442689859438-97407280183f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
+
             }
+        ]
+    },
+    {
+        title: "module test 4",
+        id: "69999",
+        icon: "https://images.unsplash.com/photo-1499084732479-de2c02d45fcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+        content: [
+            {
+                type: "vid3",
+                subtitle: "sea view mt8888",
+                content: "https://www.videvo.net/videvo_files/converted/2017_04/preview/170216A_023_BoyatWindow4_1080p.mp439692.webm",
+                caption: ""
+            },
+
         ]
     }
 ]
