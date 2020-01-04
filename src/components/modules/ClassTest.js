@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-import { View, Image, Text, Button } from 'react-native'
+import { View, Text, Button } from 'react-native'
 import * as FileSystem from 'expo-file-system'
 import { AsyncStorage, AppState } from 'react-native';
+import * as IntentLauncher from 'expo-intent-launcher';
 import VideoComp from './VideoComp'
-const sync = 'fs-module-page-Ctest22'
-const fils = 'pausedDownloads22'
-const imagi = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-const imagi3 = "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+const sync = 'ClassTest153'
+const fils = 'pausedDownloads153'
+const imagi3 = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+const imagi4 = "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
 const imagi2 = "https://www.videvo.net/videvo_files/converted/2017_04/preview/170216A_023_BoyatWindow4_1080p.mp439692.webm"
+const imagi = 'https://i.imgur.com/Sa8o2cx.mp4'
 
 export default class Ctest extends Component {
     state = {
@@ -25,7 +27,7 @@ export default class Ctest extends Component {
     //create resumable download
     downloadResumable = FileSystem.createDownloadResumable(
         imagi,
-        `${FileSystem.documentDirectory + 'ClassTest22'}.${this.state.exten}`,
+        `${FileSystem.documentDirectory + sync}.${this.state.exten}`,
         {},
         this.callback
     );
@@ -56,10 +58,12 @@ export default class Ctest extends Component {
         console.log('check prog', this.state.downloadProgress)
         if (this.state.downloadProgress !== 1 && this.state.downloadProgress !== null) {
             try {
-                await this.downloadResumable.pauseAsync();
+                await this.downloadResumable.pauseAsync().then(() => {
+                    AsyncStorage.setItem(fils, JSON.stringify(this.downloadResumable.savable()));
+                });
                 console.log('Paused download operation, saving for future retrieval, classy');
                 // async storage key should be unique here.
-                AsyncStorage.setItem(fils, JSON.stringify(this.downloadResumable.savable()));
+
             } catch (e) {
                 console.log(e);
             }
@@ -82,19 +86,18 @@ export default class Ctest extends Component {
         );
 
         this.downloadResumable = downloadResumable;
-        console.log("damn this condl  ::")
+        console.log("damn this condl  ::", this.downloadResumable._resumeData)
 
         try {
             console.log("damn this condl inside  ::")
             await this.downloadResumable.resumeAsync().then((uri) => {
                 AsyncStorage.setItem(sync, JSON.stringify({ uri: uri.uri }));
-
+                AsyncStorage.removeItem(fils)
                 AsyncStorage.getItem(sync, (err, result) => {
                     const fish = JSON.parse(result)
                     this.setState({ pathing: fish.uri })
                     this.setState({ loading: false })
                 });
-
 
             });
 
@@ -136,7 +139,24 @@ export default class Ctest extends Component {
 
     }
 
+    async stand() {
+        try {
+            console.log("standalone resume?")
+            await this.downloadResumable.resumeAsync().then((uri) => {
+                AsyncStorage.setItem(sync, JSON.stringify({ uri: uri.uri }));
+                AsyncStorage.removeItem(fils)
+                AsyncStorage.getItem(sync, (err, result) => {
+                    const fish = JSON.parse(result)
+                    this.setState({ pathing: fish.uri })
+                    this.setState({ loading: false })
+                });
 
+            });
+
+        } catch (e) {
+            console.log(e);
+        }
+    }
 
 
     _handleAppStateChange = (nextAppState) => {
@@ -144,8 +164,10 @@ export default class Ctest extends Component {
             this.state.appState.match(/inactive|background/) &&
             nextAppState === 'active'
         ) {
-            console.log('App has come to the foreground!', AppState.currentState);
-            this.resu();
+            //special case
+            console.log('App has come to the foreground!', this.props, AppState.currentState);
+            //this.stand();
+            this.props.onBack();
 
         } else {
             console.log('App has come to the bottom!', AppState.currentState);
@@ -192,3 +214,4 @@ export default class Ctest extends Component {
 
     }
 }
+
