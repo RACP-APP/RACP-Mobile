@@ -2,19 +2,21 @@ import React, { Component } from 'react'
 import { View, Text, Button } from 'react-native'
 import * as FileSystem from 'expo-file-system'
 import { AsyncStorage, AppState } from 'react-native';
-import * as IntentLauncher from 'expo-intent-launcher';
+import * as Permissions from 'expo-permissions';
+import * as MediaLibrary from 'expo-media-library';
 import VideoComp from './VideoComp'
-const sync = 'ClassTest153'
-const fils = 'pausedDownloads153'
+const sync = 'ClassTest18'
+const fils = 'pausedDow18'
 const imagi3 = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
 const imagi4 = "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
 const imagi2 = "https://www.videvo.net/videvo_files/converted/2017_04/preview/170216A_023_BoyatWindow4_1080p.mp439692.webm"
 const imagi = 'https://i.imgur.com/Sa8o2cx.mp4'
-
+const checks = '7543a4d3eafd92590af3812fe21e8a41'
 export default class Ctest extends Component {
     state = {
         pathing: null,
         loading: true,
+        failed: false,
         downloadProgress: null,
         appState: AppState.currentState,
         exten: imagi.slice((imagi.lastIndexOf(".") - 1 >>> 0) + 2)
@@ -28,9 +30,10 @@ export default class Ctest extends Component {
     downloadResumable = FileSystem.createDownloadResumable(
         imagi,
         `${FileSystem.documentDirectory + sync}.${this.state.exten}`,
-        {},
+        { md5: true },
         this.callback
     );
+
 
     async resumable() {
         //dl start
@@ -38,7 +41,7 @@ export default class Ctest extends Component {
         try {
             await this.downloadResumable.downloadAsync().then((output) => {
                 AsyncStorage.setItem(sync, JSON.stringify({ uri: output.uri }));
-                console.log('download resumable init ', this.downloadResumable, this.state.downloadProgress, output.uri);
+                console.log('download resumable init ', output.md5, this.state.downloadProgress, output.uri);
                 AsyncStorage.getItem(sync, (err, result) => {
                     const fish = JSON.parse(result)
                     this.setState({ pathing: fish.uri })
@@ -47,7 +50,7 @@ export default class Ctest extends Component {
             });
 
         } catch (e) {
-            console.log(e);
+            console.log("error in init");
         }
 
     };
@@ -65,7 +68,7 @@ export default class Ctest extends Component {
                 // async storage key should be unique here.
 
             } catch (e) {
-                console.log(e);
+                console.log("unmountpause error");
             }
         } else {
             console.log("no need")
@@ -90,19 +93,28 @@ export default class Ctest extends Component {
 
         try {
             console.log("damn this condl inside  ::")
-            await this.downloadResumable.resumeAsync().then((uri) => {
-                AsyncStorage.setItem(sync, JSON.stringify({ uri: uri.uri }));
-                AsyncStorage.removeItem(fils)
-                AsyncStorage.getItem(sync, (err, result) => {
-                    const fish = JSON.parse(result)
-                    this.setState({ pathing: fish.uri })
-                    this.setState({ loading: false })
-                });
+            await this.downloadResumable.resumeAsync().then(async (uri) => {
+                console.log(uri.md5)
 
+                if (uri.md5 !== checks) {
+                    await this.stand(uri.uri, sync, fils);
+                    this.resumable();
+                } else {
+
+                    AsyncStorage.setItem(sync, JSON.stringify({ uri: uri.uri }));
+                    AsyncStorage.removeItem(fils)
+                    AsyncStorage.getItem(sync, (err, result) => {
+                        const fish = JSON.parse(result)
+                        this.setState({ pathing: fish.uri })
+                        this.setState({ loading: false })
+
+
+                    });
+                }
             });
 
         } catch (e) {
-            console.log(e);
+            console.log("error in condl");
         }
     };
 
@@ -139,23 +151,17 @@ export default class Ctest extends Component {
 
     }
 
-    async stand() {
-        try {
-            console.log("standalone resume?")
-            await this.downloadResumable.resumeAsync().then((uri) => {
-                AsyncStorage.setItem(sync, JSON.stringify({ uri: uri.uri }));
-                AsyncStorage.removeItem(fils)
-                AsyncStorage.getItem(sync, (err, result) => {
-                    const fish = JSON.parse(result)
-                    this.setState({ pathing: fish.uri })
-                    this.setState({ loading: false })
-                });
+    async stand(link, mem, pmem) {
+        await FileSystem.deleteAsync(link)
+        await AsyncStorage.removeItem(mem)
+        await AsyncStorage.removeItem(pmem)
 
-            });
-
-        } catch (e) {
-            console.log(e);
-        }
+        this.downloadResumable = FileSystem.createDownloadResumable(
+            imagi,
+            `${FileSystem.documentDirectory + sync}.${this.state.exten}`,
+            { md5: true },
+            this.callback
+        );
     }
 
 
@@ -169,6 +175,7 @@ export default class Ctest extends Component {
             //this.stand();
             this.props.onBack();
 
+
         } else {
             console.log('App has come to the bottom!', AppState.currentState);
             this.setState({ appState: nextAppState });
@@ -177,18 +184,31 @@ export default class Ctest extends Component {
     };
 
 
-    componentDidMount() {
+    async componentDidMount() {
+
         AppState.addEventListener('change', this._handleAppStateChange);
         this.resu();
+
     }
-    componentWillUnmount() {
+    async componentWillUnmount() {
         AppState.removeEventListener('change', this._handleAppStateChange);
-        this.unmountPause();
+        await this.unmountPause();
 
     }
 
 
     render() {
+
+        {
+            if (this.state.failed) {
+                // if the image url has an issue
+                return (
+                    <View>
+                        <Text>download is corrupted{this.state.downloadProgress}</Text>
+                    </View>);
+            }
+        }
+
         {
             if (this.state.loading) {
                 return (
