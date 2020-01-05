@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Button, FlatList, Image } from 'react-native';
-import VideoComp from './VideoComp'
-import CachedImage from './CachedImage'
-import CacheVid from "./CacheVid";
-import Test from '../testmodu'
-import Ctest from './ClassTest'
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 
 
 
@@ -25,31 +20,14 @@ const Modules_Page = (props) => {
             return <Text>{cont}</Text>
         }
         else if (type === "Video") {
-            return <CacheVid
-                source={cont}
-                title={'title for the image'}
-            />
+            return
         }
         else if (type === "img") {
-            return <CachedImage
-                source={cont}
-                title={'title for the image'}
-            />
+            return
         }
-        else if (type === "img2") {
-            return <Test></Test>
-        }
-        else if (type === "vid3") {
-            return <Ctest key={value} onBack={forceRemount}></Ctest>
-        }
-        else if (type === "check point") {
-            return <View>
-                <Text>later setup</Text>
-                <Text>later setup test generate</Text>
-            </View>
-        }
+
         else {
-            return <Text>{cont}</Text>
+            return <Text>Content Unavailable</Text>
         }
     }
 

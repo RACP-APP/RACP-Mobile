@@ -8,10 +8,6 @@ import ModuleDetailScreen from '../screen/ModuleDetailScreen.js'
 import Messages from '../src/components/Messages';
 import Modules_Page from '../src/components/modules/modules_page';
 import Modules_list from '../src/components/modules/modules_list';
-import Test from '../src/components/testmodu';
-import CachedImage from '../src/components/modules/CachedImage';
-import Test2 from '../src/components/modules/test2'
-import Ctest from '../src/components/modules/ClassTest';
 
 
 
@@ -45,9 +41,6 @@ const AppTabNavigator = createBottomTabNavigator({
     testModuleList: {
         screen: Modules_list
     },
-    testo: {
-        screen: Test2
-    }
 
 
 
