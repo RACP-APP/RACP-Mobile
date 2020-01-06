@@ -7,9 +7,12 @@ import {
     FlatList,
     TouchableOpacity
 } from 'react-native';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import HeaderButton from '../src/components/HeaderButton';
 
 import {MODULES} from '../data/dummy-data';
 import ModuleGridTile from '../src/components/ModuleGridTile';
+
 
 
 const HomeScreen = props =>{
@@ -40,7 +43,15 @@ const HomeScreen = props =>{
     );
 };
 HomeScreen.navigationOptions = {
-    headerTitle: 'Module Categories'
+    headerTitle: 'Module Categories',
+    headerRight: <HeaderButtons HeaderButtonComponent={HeaderButton}>
+    <Item 
+    title="Notification"
+    iconName="ios-notifications"
+    style={{color: 'white'}}
+    onPress={()=>{console.log('Mustaf got  Notification')}}
+    />
+</HeaderButtons>
 }
 
 const styles = StyleSheet.create({

@@ -1,9 +1,9 @@
 {
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://m4-5nq.esraa-zaitoun.racp-mobile.exp.direct",
-  "packagerNgrokUrl": "https://packager.m4-5nq.esraa-zaitoun.racp-mobile.exp.direct",
-  "ngrokPid": 12567,
-  "devToolsPort": 19002,
-  "packagerPort": 19003,
-  "packagerPid": 12556
+  "devToolsPort": 19004,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": "https://f7-n3z.esraa-zaitoun.racp-mobile.exp.direct",
+  "packagerNgrokUrl": "https://packager.f7-n3z.esraa-zaitoun.racp-mobile.exp.direct",
+  "ngrokPid": 13627
 }

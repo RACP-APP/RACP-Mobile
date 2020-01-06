@@ -2,12 +2,12 @@ import React from 'react';
 import {View, Text, TouchableOpacity,StyleSheet, Image} from 'react-native';
 import VideoComp from './modules/VideoComp'
 const LandingPage=(props)=> {
-   return(<View style={styles.screen}>
+   return(<View style={styles.view}>
        <Text>
             Placeholder for introduction statement
         </Text>
        <VideoComp path={'http://techslides.com/demos/sample-videos/small.mp4'}></VideoComp>
-        <Text>
+        <Text style={styles.text}>
             Modules are the main content of this app so go check them out
         </Text>
         <TouchableOpacity
@@ -19,7 +19,7 @@ const LandingPage=(props)=> {
    )
 }
 const styles = StyleSheet.create({
-    screen: {
+    view: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'

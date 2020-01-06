@@ -48,7 +48,6 @@ ModulesScreen.navigationOptions = (navigationData) => {
   return {
     headerTitle: selectedModule.title
   }
-
 }
 
 
@@ -59,8 +58,8 @@ const styles = StyleSheet.create({
     alignItems:'center'
   },
   buttonContainer: {
-    flex: 1,
-    justifyContent: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     paddingBottom: 5
 
   }

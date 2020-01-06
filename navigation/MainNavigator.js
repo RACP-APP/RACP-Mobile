@@ -1,7 +1,8 @@
+import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs'
-
+import {Ionicons, EvilIcons, MaterialCommunityIcons} from '@expo/vector-icons';
 import HomeScreen from '../screen/HomeScreen';
 import ModulesScreen from '../screen/ModulesScreen';
 import ModuleDetailScreen from '../screen/ModuleDetailScreen.js'
@@ -10,13 +11,13 @@ import Modules_Page from '../src/components/modules/modules_page';
 import Modules_list from '../src/components/modules/modules_list';
 import Module from '../models/module';
 import LandingPage from '../src/components/LandingPage'
-
-
+import Progress from '../src/components/Progress';
+import Colors from '../constants/Colors';
 
 
 const MainNavigator = createStackNavigator(
     {
-        Home: LandingPage,
+        Home: HomeScreen,
         Modules: {
             screen: ModulesScreen
         },
@@ -43,14 +44,10 @@ const AppTabNavigator = createBottomTabNavigator({
     },
     testModuleList: {
         screen: Modules_list
-    },
-    Mustaf:{
-        screen: HomeScreen
     }
 
 
 
 });
-
 
 export default createAppContainer(AppTabNavigator);
