@@ -1,8 +1,8 @@
 {
-  "hostType": "tunnel",
-  "lanType": "ip",
   "dev": true,
   "minify": false,
-  "urlRandomness": "y7-ijz",
+  "hostType": "lan",
+  "lanType": "ip",
+  "urlRandomness": "2q-f2v",
   "https": false
 }

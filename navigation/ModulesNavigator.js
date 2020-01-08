@@ -11,7 +11,8 @@ import {
     MaterialCommunityIcons
 } from '@expo/vector-icons';
 
-
+import Modules_Page from '../src/components/modules/modules_page';
+import Modules_list from '../src/components/modules/modules_list';
 import HomeScreen from '../screen/HomeScreen';
 import ModulesScreen from '../screen/ModulesScreen';
 import ModuleContentScreen from '../screen/ModuleContentScreen';
@@ -40,6 +41,7 @@ const ModulesNavigator = createStackNavigator({
         screen: ModulesScreen
     },
     ModuleContent: ModuleContentScreen,
+    Modules_Page: Modules_Page
 },
 {
     // initialRouteName: 'Home',
@@ -51,6 +53,14 @@ const ModulesNavigator = createStackNavigator({
 
 const ProgressTabNavigator = createStackNavigator({
     Progress: Progress
+},
+
+{
+    defaultNavigationOptions: defaultStackNavOptions
+});
+
+const TestTabNavigator = createStackNavigator({
+    Modules_list: Modules_list
 },
 {
     defaultNavigationOptions: defaultStackNavOptions
@@ -125,8 +135,12 @@ const tabScreenConfig = {
               );
             },
             tabBarColor: Colors.lightBlueColor
+          },
+          
+    },
+    Modules_list:{
+            screen: TestTabNavigator,
           }
-    }
 } 
 
 

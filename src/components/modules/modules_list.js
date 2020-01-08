@@ -12,6 +12,9 @@ const headerT = (t) => {
 
     }
 }
+
+
+
 const Modules_list = (props) => {
     return (
         <View style={styles.screen}>
@@ -20,11 +23,11 @@ const Modules_list = (props) => {
                 renderItem={({ item }) =>
                     <View>
                         <ModuleIcon iconName={item.icon}></ModuleIcon>
-                        <Text>{item.title}</Text>
+                        <Text>{item.Name}</Text>
                         <Button onPress={
-                            () => props.navigation.navigate('Modules_Page', { content: item.content })
+                            () => props.navigation.navigate('Modules_Page', { pages: item.Pages })
                                 &&
-                                headerT(item.title)
+                                headerT(item.Name)
 
                         } title="go to this page" />
                     </View>
