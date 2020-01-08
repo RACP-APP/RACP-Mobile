@@ -4,11 +4,11 @@ import {View, Text, StyleSheet, Button} from 'react-native';
 import Colors from '../../constants/Colors';
 
 
-const Messages = props =>{ 
+const Progress = props =>{ 
     return(
         <View style={styles.screen}>
         <Text>
-          Messages!!!
+          Progress!!!
         </Text>
 
     </View>
@@ -16,9 +16,9 @@ const Messages = props =>{
     );
 };
 
-Messages.navigationOptions = {
- headerTitle: 'Messages'
-    
+Progress.navigationOptions = {
+   headerTitle: 'Progress....'
+   
 }
 
 const styles = StyleSheet.create({
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default Messages;
+export default Progress;
