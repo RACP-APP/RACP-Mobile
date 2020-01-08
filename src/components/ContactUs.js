@@ -10,7 +10,6 @@ const ContactUs = props =>{
         <Text>
             Contact Us!!!!
         </Text>
-
     </View>
   
     );
