@@ -4,11 +4,11 @@ import {View, Text, StyleSheet, Button} from 'react-native';
 import Colors from '../../constants/Colors';
 
 
-const Messages = props =>{ 
+const Language = props =>{ 
     return(
         <View style={styles.screen}>
         <Text>
-          Messages!!!
+            Language!!!!
         </Text>
 
     </View>
@@ -16,9 +16,9 @@ const Messages = props =>{
     );
 };
 
-Messages.navigationOptions = {
- headerTitle: 'Messages'
-    
+Language.navigationOptions = {
+   headerTitle: 'Language....'
+   
 }
 
 const styles = StyleSheet.create({
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default Messages;
+export default Language;

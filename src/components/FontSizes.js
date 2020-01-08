@@ -1,24 +1,25 @@
 import React from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
 
+import Colors from '../../constants/Colors';
 
 
-
-
-const ModuleDetailScreen = props =>{ 
+const FontSizes = props =>{ 
     return(
         <View style={styles.screen}>
         <Text>
-          Module Detail
+            Font Size !!!!
         </Text>
-        <Button
-            title="Go Back"
-            onPress={()=>{props.navigation.goBack()}}
-         />
+
     </View>
   
     );
 };
+
+FontSizes.navigationOptions = {
+   headerTitle: 'Font Size....'
+   
+}
 
 const styles = StyleSheet.create({
     screen:{
@@ -30,4 +31,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default ModuleDetailScreen;
+export default FontSizes;
