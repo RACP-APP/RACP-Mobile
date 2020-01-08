@@ -5,10 +5,12 @@ import {
     StyleSheet,
     Button, 
     FlatList,
-    TouchableOpacity
+    TouchableOpacity,
+    Image
 } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../src/components/HeaderButton';
+import LogoBarImage from '../src/components/LogoBarImage';
 
 import {MODULES} from '../data/dummy-data';
 import ModuleGridTile from '../src/components/ModuleGridTile';
@@ -42,17 +44,27 @@ const HomeScreen = props =>{
          />
     );
 };
-HomeScreen.navigationOptions = {
-    headerTitle: 'Module Categories',
-    headerRight: <HeaderButtons HeaderButtonComponent={HeaderButton}>
-    <Item 
-    title="Notification"
-    iconName="ios-notifications"
-    style={{color: 'white'}}
-    onPress={()=>{console.log('Mustaf got  Notification')}}
+HomeScreen.navigationOptions = (navData) => {
+    return {
+    headerTitle: 'Home',
+    headerRight: <LogoBarImage />,
+    headerLeft: <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item 
+        title="Menu"
+        iconName="ios-menu"
+        onPress={()=>{navData.navigation.toggleDrawer();
+        }} 
     />
-</HeaderButtons>
-}
+    <Item 
+      title="Notification"
+      iconName="ios-notifications"
+      onPress={()=>{console.log('Mustaf you got Notification')
+    }}
+    />
+    </HeaderButtons>
+    };
+};
+
 
 const styles = StyleSheet.create({
 

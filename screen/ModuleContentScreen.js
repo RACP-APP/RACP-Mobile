@@ -1,25 +1,24 @@
 import React from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
 
-import Colors from '../../constants/Colors';
 
 
-const Messages = props =>{ 
+
+
+const ModuleContentScreen = props =>{ 
     return(
         <View style={styles.screen}>
         <Text>
-          Messages!!!
+          Module Content
         </Text>
-
+        <Button
+            title="Go Back"
+            onPress={()=>{props.navigation.goBack()}}
+         />
     </View>
   
     );
 };
-
-Messages.navigationOptions = {
- headerTitle: 'Messages'
-    
-}
 
 const styles = StyleSheet.create({
     screen:{
@@ -31,4 +30,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default Messages;
+export default ModuleContentScreen;
