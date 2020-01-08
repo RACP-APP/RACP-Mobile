@@ -1,10 +1,19 @@
 {
   "devToolsPort": 19002,
+<<<<<<< HEAD
   "expoServerPort": 19000,
   "packagerPort": null,
   "packagerPid": null,
   "expoServerNgrokUrl": "https://8x-w2i.anonymous.racp-mobile.exp.direct",
   "packagerNgrokUrl": "https://packager.8x-w2i.anonymous.racp-mobile.exp.direct",
   "ngrokPid": 5452,
+=======
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+>>>>>>> 3a69632d93384dc8593d514f2aaa7a3d42034364
   "webpackServerPort": null
 }
