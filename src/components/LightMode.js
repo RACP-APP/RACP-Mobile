@@ -10,10 +10,7 @@ const LightMode = props =>{
         <Text>
             Light Mode!!!!
         </Text>
-        <Button
-            title="Go Back"
-            onPress={()=>{props.navigation.goBack()}}
-         />
+
     </View>
   
     );
