@@ -11,6 +11,11 @@ import Modules_list from '../src/components/modules/modules_list';
 
 
 
+
+
+
+
+
 const MainNavigator = createStackNavigator(
     {
         Home: HomeScreen,
@@ -40,7 +45,7 @@ const AppTabNavigator = createBottomTabNavigator({
     },
     testModuleList: {
         screen: Modules_list
-    },
+    }
 
 
 

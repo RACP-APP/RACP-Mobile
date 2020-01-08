@@ -17,13 +17,14 @@ export default class VideoContent extends Component {
 
     //class props
 
-    filename = this.props.contentData.link.replace(/^.*[\\\/]/, '');
+    filename = this.props.link.replace(/^.*[\\\/]/, '');
 
     filePathkey = this.filename;
 
     resumeKey = this.filename + 'Res';
 
-    checks = this.props.contentData.md5;
+    checks = this.props.md5;
+
 
     callback = downloadProgress => {
         const progress = downloadProgress.totalBytesWritten / downloadProgress.totalBytesExpectedToWrite;
@@ -53,7 +54,7 @@ export default class VideoContent extends Component {
 
         } catch (e) {
             //future code for ui could be here
-            console.log("error in dl init");
+            console.log("error in dl init", e);
         }
 
     };
@@ -77,7 +78,7 @@ export default class VideoContent extends Component {
     // continue after exit or pause
     async conDl() {
 
-        const downloadSnapshotJson = await AsyncStorage.getItem(resumeKey);
+        const downloadSnapshotJson = await AsyncStorage.getItem(this.resumeKey);
         const downloadSnapshot = JSON.parse(downloadSnapshotJson);
         const downloadResumable = new FileSystem.DownloadResumable(
             downloadSnapshot.url,
@@ -90,6 +91,9 @@ export default class VideoContent extends Component {
         this.downloadResumable = downloadResumable;
 
         try {
+
+            console.log("hello condl")
+
             await this.downloadResumable.resumeAsync().then(async (uri) => {
                 if (uri.md5 !== this.checks) {
                     await this.reDown(uri.uri, this.filePathkey, this.resumeKey);
@@ -105,6 +109,7 @@ export default class VideoContent extends Component {
                     });
                 }
             });
+
 
         } catch (e) {
             //
@@ -164,15 +169,20 @@ export default class VideoContent extends Component {
             this.state.appState.match(/inactive|background/) &&
             nextAppState === 'active'
         ) {
-            this.props.onBack();
+            //this.props.onBack(true);
+            //console.log("what the", this.value)
+            this.resu();
+
         } else {
             this.setState({ appState: nextAppState });
             this.unmountPause();
+            //this.props.onBack(false);
         }
     };
 
 
     async componentDidMount() {
+
         AppState.addEventListener('change', this._handleAppStateChange);
         this.resu();
     }
