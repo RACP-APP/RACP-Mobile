@@ -34,7 +34,7 @@ const Contents = (props) => {
             return <VideoHandler source={cont} md5={md5} />
         }
         else if (type === "Image") {
-            return <Image source={{ uri: cont }} />
+            return <Image style={{ width: 300, height: 300 }} source={{ uri: cont }} />
         }
 
         else {
